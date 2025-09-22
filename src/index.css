@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", "Roboto", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top left, #2a2a72, #1b1b2f, #000);
+  overflow: hidden;
+}
+
+/* Animated glowing blobs in background */
+body::before, 
+body::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(94, 96, 206, 0.4);
+  filter: blur(150px);
+  animation: moveBlobs 20s infinite alternate ease-in-out;
+  z-index: 0;
+}
+
+body::after {
+  background: rgba(255, 182, 193, 0.4);
+  top: auto;
+  bottom: -100px;
+  right: -100px;
+  animation-delay: 10s;
+}
+
+@keyframes moveBlobs {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(100px, -50px) scale(1.2); }
+  100% { transform: translate(-50px, 100px) scale(1); }
+}
+
+/* App wrapper */
+.app {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  z-index: 1; /* Keeps Weather card above background */
+}
